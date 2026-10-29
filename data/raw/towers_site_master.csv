@@ -1,0 +1,41 @@
+tower_id,site_name,region,city,lat,lon,vendor,technology,backhaul,backup_power,backup_hours,field_team,traffic_weight,enterprise_customers
+GP-001,Johannesburg CBD Rooftop,Gauteng,Johannesburg,-26.2041,28.0473,Ericsson,5G,fibre,battery+generator,24,GP-Central,2.7,Jacaranda Health Network
+GP-002,Sandton Central,Gauteng,Sandton,-26.1076,28.0567,Ericsson,5G,fibre,battery+generator,24,GP-Central,2.7,Jacaranda Health Network;Karoo Mutual Bank
+GP-003,Soweto Orlando,Gauteng,Soweto,-26.2485,27.8540,Huawei,4G,microwave,battery,4,GP-Central,2.7,
+GP-004,Midrand Waterfall,Gauteng,Midrand,-25.9992,28.1263,Nokia,5G,fibre,battery+generator,24,GP-North,2.7,Karoo Mutual Bank
+GP-005,Pretoria CBD,Gauteng,Pretoria,-25.7479,28.2293,Ericsson,5G,fibre,battery+generator,24,GP-North,2.7,Jacaranda Health Network
+GP-006,Centurion Lake,Gauteng,Centurion,-25.8603,28.1894,Nokia,5G,fibre,battery,6,GP-North,2.7,Jacaranda Health Network
+GP-007,Randburg Ferndale,Gauteng,Randburg,-26.0936,28.0064,Huawei,4G,microwave,battery,4,GP-Central,2.7,Karoo Mutual Bank
+GP-008,Roodepoort Florida,Gauteng,Roodepoort,-26.1625,27.8725,Huawei,4G,microwave,battery,4,GP-Central,2.7,
+GP-009,Kempton Park Airport Corridor,Gauteng,Kempton Park,-26.1000,28.2333,Ericsson,5G,fibre,battery+generator,24,GP-North,2.7,Coastal Freight Logistics
+GP-010,Germiston Junction,Gauteng,Germiston,-26.2309,28.1772,Nokia,4G,fibre,battery,6,GP-East-South,2.7,
+GP-011,Benoni Lakes,Gauteng,Benoni,-26.1885,28.3207,Huawei,4G,microwave,battery,4,GP-East-South,2.7,
+GP-012,Boksburg East Rand Mall,Gauteng,Boksburg,-26.2125,28.2596,Nokia,4G,fibre,battery,2,GP-East-South,2.7,
+GP-013,Vereeniging Industrial,Gauteng,Vereeniging,-26.6731,27.9261,Ericsson,4G,fibre,generator,48,GP-East-South,2.7,Highveld Mining Group
+GP-014,Soshanguve Block L,Gauteng,Soshanguve,-25.5225,28.1003,Huawei,4G,microwave,battery,2,GP-North,2.7,
+WC-001,Cape Town Foreshore,Western Cape,Cape Town,-33.9249,18.4241,Ericsson,5G,fibre,battery+generator,24,WC-Field,2.2,Coastal Freight Logistics;Karoo Mutual Bank
+WC-002,Bellville Tygervalley,Western Cape,Bellville,-33.9000,18.6333,Nokia,5G,fibre,battery+generator,24,WC-Field,2.2,Jacaranda Health Network
+WC-003,Stellenbosch Central,Western Cape,Stellenbosch,-33.9321,18.8602,Nokia,4G,fibre,battery,6,WC-Field,2.2,
+WC-004,Mitchells Plain Town Centre,Western Cape,Mitchells Plain,-34.0515,18.6181,Huawei,4G,microwave,battery,4,WC-Field,2.2,
+WC-005,George N2 Corridor,Western Cape,George,-33.9630,22.4617,Huawei,4G,microwave,battery,4,WC-Field,2.2,
+WC-006,Paarl Main Road,Western Cape,Paarl,-33.7342,18.9621,Nokia,4G,fibre,battery,6,WC-Field,2.2,
+KZN-001,Durban Point,KwaZulu-Natal,Durban,-29.8587,31.0218,Ericsson,5G,fibre,battery+generator,24,KZN-Field,2.0,Coastal Freight Logistics
+KZN-002,Umhlanga Ridge,KwaZulu-Natal,Umhlanga,-29.7277,31.0844,Ericsson,5G,fibre,battery+generator,24,KZN-Field,2.0,Jacaranda Health Network
+KZN-003,Pinetown Hub,KwaZulu-Natal,Pinetown,-29.8167,30.8500,Huawei,4G,microwave,battery,4,KZN-Field,2.0,
+KZN-004,Pietermaritzburg Central,KwaZulu-Natal,Pietermaritzburg,-29.6006,30.3794,Nokia,4G,fibre,battery,6,KZN-Field,2.0,
+KZN-005,Richards Bay Harbour,KwaZulu-Natal,Richards Bay,-28.7830,32.0377,Ericsson,4G,fibre,generator,48,KZN-Field,2.0,Coastal Freight Logistics
+KZN-006,Newcastle North,KwaZulu-Natal,Newcastle,-27.7580,29.9318,Huawei,4G,microwave,battery,4,KZN-Field,2.0,
+EC-001,Gqeberha Harbour,Eastern Cape,Gqeberha,-33.9608,25.6022,Ericsson,4G,fibre,battery+generator,24,EC-Field,2.0,Coastal Freight Logistics
+EC-002,East London Quigney,Eastern Cape,East London,-33.0153,27.9116,Nokia,4G,fibre,battery,6,EC-Field,2.0,
+EC-003,Mthatha Central,Eastern Cape,Mthatha,-31.5889,28.7844,Huawei,4G,microwave,battery,2,EC-Field,2.0,
+FS-001,Bloemfontein Central,Free State,Bloemfontein,-29.0852,26.1596,Nokia,4G,fibre,battery+generator,24,FS-Field,2.4,
+FS-002,Welkom Goldfields,Free State,Welkom,-27.9774,26.7351,Huawei,4G,microwave,battery,4,FS-Field,2.4,Highveld Mining Group
+LP-001,Polokwane CBD,Limpopo,Polokwane,-23.9045,29.4689,Nokia,4G,fibre,battery,6,LP-Field,2.5,
+LP-002,Thohoyandou Central,Limpopo,Thohoyandou,-22.9456,30.4847,Huawei,4G,microwave,battery,2,LP-Field,2.5,
+MP-001,Mbombela Riverside,Mpumalanga,Mbombela,-25.4658,30.9853,Nokia,4G,fibre,battery,6,MP-Field,2.3,
+MP-002,eMalahleni Coalfields,Mpumalanga,eMalahleni,-25.8713,29.2332,Ericsson,4G,fibre,generator,48,MP-Field,2.3,Highveld Mining Group
+MP-003,Secunda Industrial,Mpumalanga,Secunda,-26.5167,29.1833,Ericsson,4G,fibre,generator,48,MP-Field,2.3,Highveld Mining Group
+NW-001,Rustenburg Platinum Belt,North West,Rustenburg,-25.6676,27.2421,Ericsson,4G,fibre,generator,48,NW-Field,2.6,Highveld Mining Group
+NW-002,Mahikeng Central,North West,Mahikeng,-25.8652,25.6442,Huawei,4G,microwave,battery,4,NW-Field,2.6,
+NC-001,Kimberley Big Hole,Northern Cape,Kimberley,-28.7282,24.7499,Nokia,4G,fibre,battery,6,NC-Field,1.5,Highveld Mining Group
+NC-002,Upington Orange River,Northern Cape,Upington,-28.4478,21.2561,Huawei,4G,microwave,battery+solar,12,NC-Field,1.5,

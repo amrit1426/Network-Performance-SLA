@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.env
+.venv/
+venv/
+.ipynb_checkpoints
+*.parquet
+*.pkl
+*.joblib
+.DS_Store
+Thumbs.db
