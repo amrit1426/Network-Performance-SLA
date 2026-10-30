@@ -147,6 +147,13 @@ def load_data():
     net = pd.read_csv(NETWORK_URL)
     tower = pd.read_csv(MASTER_URL)
 
+    # Ensure Date is datetime before any .dt access
+    net["Date"] = pd.to_datetime(net["Date"], errors="coerce")
+
+    # Clean text fields
+    for col in ["SiteID", "Region", "NetworkType"]:
+        net[col] = net[col].astype(str).str.strip()
+
     st.caption(f"Network data : {net.shape[0]:,} rows x {net.shape[1]} columns  <- remote: {NETWORK_URL}")
     st.caption(f"Tower master : {tower.shape[0]:,} rows x {tower.shape[1]} columns  <- remote: {MASTER_URL}")
 
@@ -155,10 +162,8 @@ def load_data():
 
 net, tower = load_data()
 
-# Derived columns
 UPTIME_BENCHMARK = 99.9
 MIN_OBS_PER_SITE = 3
-RNG_SEED = 42
 
 net["below_benchmark"] = net["Uptime"] < UPTIME_BENCHMARK
 net["Day"] = net["Date"].dt.normalize()
