@@ -154,9 +154,8 @@ def load_data():
     for col in ["SiteID", "Region", "NetworkType"]:
         net[col] = net[col].astype(str).str.strip()
 
-    st.caption(f"Data loaded successfully.")
-
     return net, tower
+
 
 
 net, tower = load_data()
@@ -346,10 +345,6 @@ st.markdown(
     <div style="display:flex; align-items:center; gap:14px; margin-bottom:4px;">
         <span style="font-size:1.6rem; font-weight:700; color:#F3F4F6;">Network Intelligence</span>
         <span class="badge badge-info">Illustrative Dataset</span>
-    </div>
-    <div style="font-size:0.95rem; color:#9CA3AF; margin-bottom:18px;">
-        Network Performance &amp; SLA Analytics &nbsp;|&nbsp; Assumed {UPTIME_BENCHMARK}% uptime benchmark &nbsp;|&nbsp;
-        {len(net):,} observations &nbsp;|&nbsp; {net['SiteID'].nunique()} SiteID identifiers
     </div>
     """,
     unsafe_allow_html=True,
@@ -763,7 +758,8 @@ elif page == "Data Quality & Limitations":
         st.markdown("#### Dataset Overview")
         dq_rows = [
             ("Network observations", f"{len(net):,}"),
-            ("Columns", f"{net.shape[1]}"),
+            ("Columns (original)", "8"),
+            ("Derived columns", "2 (below_benchmark, Day)"),
             ("Distinct SiteID identifiers", f"{net['SiteID'].nunique()}"),
             ("Regions", f"{net['Region'].nunique()}"),
             ("Network technologies", f"{net['NetworkType'].nunique()}"),
@@ -789,7 +785,10 @@ elif page == "Data Quality & Limitations":
                 badge = '<span class="badge badge-warn">Review</span>'
             else:
                 badge = '<span class="badge badge-info">Info</span>'
-            st.markdown(f"- **{label}** {badge}  \n  {value}")
+            st.markdown(
+                f"- **{label}** {badge}  <br>  {value}",
+                unsafe_allow_html=True,
+            )
 
     st.markdown("#### Important Limitations")
     st.markdown(
