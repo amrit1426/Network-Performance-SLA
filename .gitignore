@@ -1,12 +1,26 @@
+# Python
 __pycache__/
 *.pyc
-*.egg-info/
-.env
+*.pyo
 .venv/
 venv/
-.ipynb_checkpoints
-*.parquet
-*.pkl
-*.joblib
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Data (keep CSVs in repo; ignore large generated files)
+*.parquet
+*.pkl
+*.feather
+
+# IDE
+.vscode/
+.idea/

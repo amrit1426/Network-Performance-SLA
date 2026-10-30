@@ -1,156 +1,173 @@
-# 📡 Telecom Network Performance & SLA Analytics
+# Network Intelligence — Network Performance & SLA Analytics
 
-**Network Performance SLA | Telecom Data Analytics**
+A dark-themed Streamlit portfolio dashboard that presents the findings of a complete telecom network performance analysis. The dashboard translates an analytical notebook into an interactive business intelligence experience, covering regional and technology comparisons, daily trends, SiteID-group prioritisation, and transparent data-quality documentation.
+
+> **Note:** This project uses an illustrative historical dataset. It is not connected to a live telecom operator network. All uptime figures are analytical proxies, not contractual SLA compliance.
 
 ---
 
-## Business Problem
+## Business Context
 
-As a Network Operations Analyst at a telecom operator, you are responsible for monitoring network health, ensuring SLA compliance, and driving operational improvements across a multi-vendor, multi-technology infrastructure. This project analyzes network performance data from 199 sites across 5 regions over 30 days, evaluating KPIs like uptime, downtime, faults, and traffic against SLA benchmarks.
+Telecom network operations teams need to monitor service availability, identify under-performing segments, and prioritise field investigations with limited time and budget. This project demonstrates a disciplined analytics workflow applied to a synthetic but realistic network performance dataset.
 
-## Intended Stakeholder
+The analysis evaluates uptime, downtime, fault counts and traffic volume across five regions and three network technologies (3G, 4G, 5G), using an assumed 99.9% uptime benchmark as an analytical reference point.
 
-- **Primary:** Network Operations Manager / NOC Lead
-- **Secondary:** Field Engineering teams, Vendor management, Regulatory compliance team
+---
 
-## Business Questions
+## Project Objectives
 
-1. Which regions and technologies are missing SLA compliance?
-2. What are the root causes of downtime?
-3. Are there daily patterns affecting network performance?
-4. Which sites represent the highest operational risk?
-5. What concrete actions can improve overall network availability?
+1. Assess how observed uptime compares to the assumed 99.9% benchmark at record, regional, technology and SiteID-group levels.
+2. Compare regional and technology performance while documenting observation coverage.
+3. Describe daily temporal patterns without over-interpreting short-window variation.
+4. Identify candidate SiteID groups for further operational investigation using a transparent heuristic.
+5. Communicate data limitations honestly so that conclusions are proportionate to the evidence.
 
-## Key Performance Indicators (KPIs)
+---
 
-- Average Uptime % (target: ≥99.9%)
-- Total Downtime (minutes)
-- Total Faults
-- Average Traffic Load
-- Max Downtime events
-- Regional performance variance
-- Technology-wise performance
+## Dataset Description
 
-## Dataset Source
+| Item | Detail |
+|------|--------|
+|| Network file | `network_perf_raw.csv` — one row per observation |
+| Tower master | `towers_site_master.csv` — supplementary site attributes (excluded from joins) |
+| Data source | [Network-Performance-SLA GitHub repository](https://github.com/amrit1426/Network-Performance-SLA) |
+| Loaded from | Raw GitHub URLs — `network_perf_raw.csv` and `towers_site_master.csv` are loaded directly from the repository's `data/raw/` folder. No local copies are required. |
+| Rows | 1,000 |
+| Columns | 8 (`SiteID`, `Region`, `NetworkType`, `Uptime`, `Downtime`, `Faults`, `Traffic`, `Date`) |
+| SiteID identifiers | 199 distinct |
+| Regions | 5 (Central, East, North, South, West) |
+| Technologies | 3 (3G, 4G, 5G) |
+| Period | 01 Jan 2026 – 30 Jan 2026 |
+| Missing values | 0 in network dataset |
 
-- **Source:** Telecom Network Performance Dataset
-- **URL:** https://github.com/olufemi-builds/Telecom-Network-Performance-Dashboard
-- **License:** Public / Educational use
-- **Size:** 1,000 rows × 8 columns
-- **Time Period:** January 1-30, 2026
-- **Coverage:** 199 sites, 5 regions, 3 technologies (3G/4G/5G)
-- **Raw file:** `data/raw/network_perf_raw.csv`
-- **Tower master:** `data/raw/towers_site_master.csv`
+**Key data-quality findings:**
+- 189 of 199 SiteID identifiers appear across multiple regions.
+- 187 of 199 SiteID identifiers appear across multiple network technologies.
+- 146 rows (14.6%) share a SiteID+Date combination with another observation.
+- Zero identifier overlap between the network dataset and the tower master dataset.
+- The measurement window behind each record is undocumented.
 
-## Tools and Skills Demonstrated
+---
 
-- Python (pandas, numpy, matplotlib, seaborn, scipy)
-- Data visualization and KPI dashboarding
-- Statistical analysis (ANOVA, correlation)
-- Business-oriented network analytics
-- Streamlit app deployment
-- Jupyter notebook development
+## Tools and Technologies
+
+| Component | Technology |
+|-----------|-----------|
+| Analytics notebook | Python, pandas, NumPy, SciPy, Matplotlib, Seaborn |
+| Dashboard | Streamlit, Plotly |
+| Version control | Git / GitHub |
+
+---
+
+## Analytics Notebook
+
+`network_performance_analysis.ipynb` contains the full reproducible analysis:
+
+- Data loading and configuration with remote GitHub fallback
+- Data-quality assessment (missing values, duplicates, cross-region/cross-technology SiteIDs, identifier overlap with tower master)
+- KPI definitions and aggregation logic
+- Executive summary (dynamically generated from computed results)
+- Regional and technology performance comparisons
+- Daily trends and day-of-week descriptive summaries
+- SiteID-group exploratory analysis and prioritisation
+- Bootstrap confidence intervals (95%, cluster bootstrap by SiteID)
+- Statistical diagnostics: ANOVA, Kruskal-Wallis, Levene's test, Holm-Bonferroni adjustment, eta-squared effect size, ICC
+- Spearman rank correlations
+- Evidence-based recommendations with findings, hypotheses and quantified-impact sections kept separate
+- Limitations and future enhancements
+
+The notebook is the analytical source of truth. The Streamlit dashboard presents these findings interactively without re-running or expanding the analysis.
+
+---
+
+## Streamlit Dashboard Features
+
+The **Network Intelligence** dashboard provides six modules accessible from the sidebar:
+
+1. **Executive Overview** — network-wide KPIs, record coverage by technology, regional uptime vs benchmark.
+2. **Regional Performance** — regional comparison tables, uptime bars, share of records below benchmark.
+3. **Technology Performance** — technology-level KPIs, uptime, downtime and fault comparisons.
+4. **Daily Trends** — interactive date-filtered daily uptime, downtime and record-coverage charts.
+5. **SiteID-Group Explorer** — eligible SiteID-group table with exploratory priority scores and uptime ranking.
+6. **Data Quality & Limitations** — dataset overview, key quality flags and honest limitation statements.
+
+### Design
+
+- Dark navy/charcoal interface with teal and cyan accents.
+- High-contrast KPI cards with accent borders.
+- Interactive Plotly charts with consistent dark styling.
+- Sidebar filters for date range, region and technology.
+- Responsive layout optimised for desktop use.
+
+---
 
 ## Project Structure
 
 ```
-TelecomNetworkPerformance_SLA/
-├── data/
-│   ├── raw/
-│   │   ├── network_perf_raw.csv
-│   │   └── towers_site_master.csv
-│   └── processed/
-├── notebooks/
-│   └── network_performance_analysis.ipynb
-├── reports/
-│   └── figures/
-│       ├── network_performance.png
-│       └── daily_trends.png
-├── src/
-│   └── utilities.py
-├── scripts/
-│   └── run_analysis.py
+Network-Performance-SLA/
 ├── app.py
+├── network_performance_analysis.ipynb
+├── network_perf_raw.csv
+├── towers_site_master.csv
+├── README.md
 ├── requirements.txt
-├── .gitignore
-├── .streamlit/config.toml
-└── README.md
+└── .gitignore
 ```
 
-## Setup and Execution
+---
 
-### Local Setup
+## Installation
+
+Clone the repository and install dependencies:
+
 ```bash
-python -m venv venv
-venv\Scripts\activate  # Windows
+git clone https://github.com/amrit1426/Network-Performance-SLA.git
+cd Network-Performance-SLA
 pip install -r requirements.txt
 ```
 
-### Run Analysis Script
-```bash
-python scripts/run_analysis.py
-```
+---
 
-### Launch Streamlit App
+## How to Run the Dashboard
+
 ```bash
 streamlit run app.py
 ```
 
-### Open Jupyter Notebook
-```bash
-jupyter notebook notebooks/network_performance_analysis.ipynb
+The application opens in your default browser at `http://localhost:8501`.
+
+---
+
+## Important Assumptions and Limitations
+
+- **Assumed benchmark, not contractual SLA:** The 99.9% uptime figure is an analytical benchmark. No SLA contract, measurement period, exclusions or penalty rules are available.
+- **SiteID identity:** SiteID identifiers have not been established as stable physical tower identifiers. They appear across multiple regions and technologies, and 14.6% of rows share a SiteID+Date combination with another observation.
+- **Undocumented measurement windows:** The duration behind each record is undocumented. Uptime and downtime are analysed separately and never converted into one another.
+- **No causal information:** No fault categories, maintenance records, power status, backhaul type, vendor or cost fields exist. Root causes cannot be identified.
+- **Tower master excluded:** The tower master dataset has zero matching identifiers with the network data. It is not joined.
+- **Short observation window:** One month of data cannot establish seasonality, trends or recurring weekly patterns.
+- **Sparse sampling:** Most SiteID groups have few observations; site-level averages and rankings are noisy.
+
+---
+
+## Future Deployment
+
+The dashboard is ready for deployment on Streamlit Community Cloud.
+
+Placeholder deployment URL (replace after deployment):
+
+```
+https://YOUR-STREAMLIT-APP-NAME.streamlit.app
 ```
 
-## Key Findings
+---
 
-| Metric | Value |
-|--------|-------|
-| Total Records | 1,000 |
-| Sites | 199 |
-| Average Uptime | 98.48% |
-| Total Faults | 1,985 |
-| Average Traffic | 201.53 |
+## GitHub Repository
 
-### Critical Insights
-- West region shows lowest average uptime
-- 3G technology contributes highest downtime
-- Total 1,985 faults recorded across 30 days
-- Daily uptime varies with some days below 97%
-- Statistical analysis confirms significant regional variance
+[https://github.com/amrit1426/Network-Performance-SLA](https://github.com/amrit1426/Network-Performance-SLA)
 
-## Business Recommendations
+---
 
-### Immediate (0-30 days)
-- Focus on West region for immediate intervention
-- Address 3G technology - highest downtime contribution
-- Review sites with Downtime > 60 mins for emergency maintenance
+## License
 
-### Short-term (30-90 days)
-- Implement predictive maintenance for high-downtime technologies
-- Review traffic engineering for overloaded sites
-- Seasonal preparedness for monsoon months
-
-### Medium-term (90-180 days)
-- Technology refresh plan for legacy 3G towers
-- Deploy redundant backhaul for critical towers
-- Real-time KPI monitoring dashboard
-
-### Expected Impact
-- Uptime improvement: +0.5% → saves ~432 mins downtime/month
-- SLA compliance: from current levels to >95% compliant sites
-- OPEX savings: ₹1-2Cr/year from reduced truck rolls
-
-## Limitations
-
-- Dataset covers only 30 days; longer history would reveal seasonal patterns
-- 199 sites is a small subset; full operator portfolio may have thousands
-- Missing vendor-level granularity in network performance data
-- No customer impact data (e.g., affected subscribers per fault)
-
-## Next Steps
-
-- Integrate with tower master data for vendor analysis
-- Add more recent/public telecom datasets (TRAI, Ookla, etc.)
-- Build predictive model for fault forecasting
-- Deploy on Streamlit Community Cloud
-- Create Power BI dashboard version
+This project is shared as a portfolio piece. The dataset is illustrative.
