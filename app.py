@@ -154,8 +154,7 @@ def load_data():
     for col in ["SiteID", "Region", "NetworkType"]:
         net[col] = net[col].astype(str).str.strip()
 
-    st.caption(f"Network data : {net.shape[0]:,} rows x {net.shape[1]} columns  <- remote: {NETWORK_URL}")
-    st.caption(f"Tower master : {tower.shape[0]:,} rows x {tower.shape[1]} columns  <- remote: {MASTER_URL}")
+    st.caption(f"Data loaded successfully.")
 
     return net, tower
 
@@ -725,13 +724,13 @@ elif page == "SiteID-Group Explorer":
         )
 
         fig = px.bar(
-            display_df.sort_values("avg_uptime"),
-            x="avg_uptime", y="SiteID", orientation="h",
-            color="avg_uptime",
+            display_df.sort_values("Avg Uptime (%)"),
+            x="Avg Uptime (%)", y="SiteID", orientation="h",
+            color="Avg Uptime (%)",
             color_continuous_scale=["#EF4444", "#F59E0B", "#10B981"],
             range_color=[f_eligible["avg_uptime"].min() - 0.1, UPTIME_BENCHMARK],
-            text="avg_uptime",
-            labels={"avg_uptime": "Average Uptime (%)", "SiteID": "SiteID Group"},
+            text="Avg Uptime (%)",
+            labels={"Avg Uptime (%)": "Average Uptime (%)", "SiteID": "SiteID Group"},
             height=420,
         )
         fig.update_traces(texttemplate="%{text:.2f}%", textposition="outside", cliponaxis=False)
@@ -814,9 +813,6 @@ elif page == "Data Quality & Limitations":
 st.markdown(
     """
     <div class="footer-note">
-    Network Intelligence — Network Performance &amp; SLA Analytics &nbsp;|&nbsp; 
-    Illustrative historical dataset &nbsp;|&nbsp; 
-    Not connected to a live network &nbsp;|&nbsp; 
     <a href="https://github.com/amrit1426/Network-Performance-SLA" target="_blank" style="color:#14B8A6;">GitHub Repository</a>
     </div>
     """,

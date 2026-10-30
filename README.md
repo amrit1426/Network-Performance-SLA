@@ -4,6 +4,8 @@ A dark-themed Streamlit portfolio dashboard that presents the findings of a comp
 
 > **Note:** This project uses an illustrative historical dataset. It is not connected to a live telecom operator network. All uptime figures are analytical proxies, not contractual SLA compliance.
 
+**Live Dashboard:** [https://nw-performance-sla.streamlit.app](https://nw-performance-sla.streamlit.app)
+
 ---
 
 ## Business Context
@@ -150,15 +152,13 @@ The application opens in your default browser at `http://localhost:8501`.
 
 ---
 
-## Future Deployment
+## Live Deployment
 
-The dashboard is ready for deployment on Streamlit Community Cloud.
+The dashboard is deployed on Streamlit Community Cloud:
 
-Placeholder deployment URL (replace after deployment):
+**[https://nw-performance-sla.streamlit.app](https://nw-performance-sla.streamlit.app)**
 
-```
-https://YOUR-STREAMLIT-APP-NAME.streamlit.app
-```
+To run locally instead, see the installation instructions above.
 
 ---
 
